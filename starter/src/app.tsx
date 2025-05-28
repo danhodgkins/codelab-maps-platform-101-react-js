@@ -18,6 +18,7 @@ import {AdvancedMarker, APIProvider, Map, MapCameraChangedEvent, Pin} from '@vis
 
 import React from 'react';
 import { createRoot } from "react-dom/client";
+import CustomMarker from './components/CustomMarker';
 
 type Poi ={ key: string, location: google.maps.LatLngLiteral }
 const locations: Poi[] = [
@@ -38,6 +39,8 @@ const locations: Poi[] = [
   {key: 'barangaroo', location: { lat: - 33.8605523, lng: 151.1972205 }},
 ];
 
+
+
 const App = () => (
 <APIProvider apiKey={'AIzaSyBKNw2-w9jBvCJwbGMbLlhWJ69TxVobklI'} onLoad={() => console.log('Maps API has loaded.')}>
     <Map
@@ -53,15 +56,19 @@ const App = () => (
 </APIProvider>);
 
 const PoiMarkers = (props: {pois: Poi[]}) => {
+
+    
   return (
     <>
-      {props.pois.map( (poi: Poi) => (
-        <AdvancedMarker
-          key={poi.key}
-          position={poi.location}>
-        <Pin background={'#FBBC04'} glyphColor={'#000'} borderColor={'#000'} />
-        </AdvancedMarker>
-      ))}
+    <CustomMarker />
+      {/* {props.pois.map( (poi: Poi) => (
+        <CustomMarker />
+        // <AdvancedMarker
+        //   key={poi.key}
+        //   position={poi.location}>
+        // <Pin background={'#FBBC04'} glyphColor={'#000'} borderColor={'#000'} />
+        // </AdvancedMarker>
+      ))} */}
     </>
   );
 };
